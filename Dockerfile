@@ -51,8 +51,7 @@ ENV PATH="$PATH:/usr/local/go/bin" LD_LIBRARY_PATH="/usr/local/lib64/srx"
 
 COPY gobgp-router/*.conf /etc/
 COPY gobgp-router/run_routers.sh /etc/
-COPY gobgp-router/keys /etc/keys/
-COPY gobgp-router/keys2 /etc/keys2/
+COPY gobgp-router/bgpsec-keys /var/lib/bgpsec-keys
 RUN sed -i 's/\r$//' /etc/run_routers.sh && chmod +x /etc/run_routers.sh
 
 # Expose gRPC and BGP ports

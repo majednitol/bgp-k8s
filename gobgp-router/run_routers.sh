@@ -15,6 +15,8 @@ fi
 
 # List of IPs to assign
 ips=(
+  "10.0.0.3/16"
+  "10.0.0.2/16"
   "209.55.246.1/32"
   "34.190.208.1/32"
   "107.202.0.1/32"
@@ -63,14 +65,14 @@ echo "Injecting static routes..."
 
 # --- Router1 (AS 13335) ---
 echo "→ Router1 (AS 65005)"
-gobgp -p 50051 global rib add 45.192.224.0/24 origin igp
-gobgp -p 50051 global rib add 156.243.83.0/24 origin igp
+# gobgp -p 50051 global rib add 10.0.0.2/16 origin igp
+gobgp -p 50051 global rib add 10.0.0.2/16 bgpsec
 
 # --- Router2 (AS 15169) ---
 echo "→ Router2 (AS 65010)"
-gobgp -p 50052 global rib add 45.192.224.0/24 origin igp
-gobgp -p 50052 global rib add 142.250.0.0/15 origin igp
-gobgp -p 50052 global rib add 199.36.154.0/23 origin igp
+gobgp -p 50052 global rib add 10.0.0.0/16 bgpsec
+# gobgp -p 50052 global rib add 142.250.0.0/15 origin igp
+# gobgp -p 50052 global rib add 199.36.154.0/23 origin igp
 
 # # --- Router3 (AS 7018) ---
 # # echo "→ Router3 (AS 7018)"
