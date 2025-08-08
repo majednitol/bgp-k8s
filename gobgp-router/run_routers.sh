@@ -58,7 +58,7 @@ for i in {1..2}; do
 done
 
 echo "Waiting for all routers to start..."
-sleep 3  
+sleep 10  
 
 # ✅ Inject Static Routes
 echo "Injecting static routes..."
@@ -66,11 +66,11 @@ echo "Injecting static routes..."
 # --- Router1 (AS 13335) ---
 echo "→ Router1 (AS 65005)"
 # gobgp -p 50051 global rib add 10.0.0.2/16 origin igp
-gobgp -p 50051 global rib add 10.0.0.2/16 bgpsec
+
+# gobgp -p 50051 global rib add 10.0.0.2/16 bgpsec
 
 # --- Router2 (AS 15169) ---
 echo "→ Router2 (AS 65010)"
-gobgp -p 50052 global rib add 10.0.0.0/16 bgpsec
 # gobgp -p 50052 global rib add 142.250.0.0/15 origin igp
 # gobgp -p 50052 global rib add 199.36.154.0/23 origin igp
 
