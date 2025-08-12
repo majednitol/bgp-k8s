@@ -17,23 +17,6 @@ fi
 ips=(
   "10.0.0.3/16"
   "10.0.0.2/16"
-  "209.55.246.1/32"
-  "34.190.208.1/32"
-  "107.202.0.1/32"
-  "138.0.40.1/32"
-  "190.151.64.1/32"
-  "189.0.32.1/32"
-  "153.112.201.1/32"
-  "83.234.128.1/32"
-  "82.27.105.1/32"
-  "41.182.0.1/32"
-  "102.135.189.1/32"
-  "41.228.48.1/32"
-  "41.173.214.1/32"
-  "123.49.32.1/32"
-  "115.112.0.1/32"
-  "82.21.134.1/32"
-  "110.33.21.1/32"
 )
 
 for ip in "${ips[@]}"; do
@@ -58,103 +41,19 @@ for i in {1..2}; do
 done
 
 echo "Waiting for all routers to start..."
-sleep 10  
+sleep 20  
 
 # ✅ Inject Static Routes
 echo "Injecting static routes..."
 
 # --- Router1 (AS 13335) ---
 echo "→ Router1 (AS 65005)"
-# gobgp -p 50051 global rib add 10.0.0.2/16 origin igp
+gobgp -p 50051 global rib add 10.0.0.2/16 origin igp
 
-# gobgp -p 50051 global rib add 10.0.0.2/16 bgpsec
-
-# --- Router2 (AS 15169) ---
-echo "→ Router2 (AS 65010)"
-# gobgp -p 50052 global rib add 142.250.0.0/15 origin igp
-# gobgp -p 50052 global rib add 199.36.154.0/23 origin igp
-
-# # --- Router3 (AS 7018) ---
-# # echo "→ Router3 (AS 7018)"
-# gobgp -p 50053 global rib add 142.250.0.0/15 origin igp
-# gobgp -p 50053 global rib add 107.129.0.0/18 origin igp
-
-# # --- Router4 (AS 52320) ---
-# echo "→ Router4 (AS 52320)"
-# gobgp -p 50054 global rib add 200.16.68.0/22 origin igp
-# gobgp -p 50054 global rib add 156.243.83.0/24 origin igp
+#  gobgp -p 50051 global rib add 10.0.0.2/16 bgpsec
+#  gobgp -p 50052 global rib add 10.0.0.2/16 bgpsec
 
 
-# # --- Router5 (AS 6471) ---
-# echo "→ Router5 (AS 6471 )" 
-# gobgp -p 50055 global rib add 199.36.154.0/23 origin igp
-# gobgp -p 50055 global rib add 164.77.157.0/24 origin igp
-# gobgp -p 50055 global rib add 200.16.68.0/22 origin igp
-
-# # --- Router6 (AS 27699) ---
-# echo "→ Router6 (AS 27699)"
-# gobgp -p 50056 global rib add 107.129.0.0/18 origin igp
-# gobgp -p 50056 global rib add 164.77.157.0/24 origin igp
-# gobgp -p 50056 global rib add 177.9.0.0/16 origin igp
-# gobgp -p 50056 global rib add 201.95.0.0/16 origin igp
-
-# # --- Router7 (AS 1299) ---
-# echo "→ Router7 (AS 1299)"
-# gobgp -p 50057 global rib add 177.9.0.0/16 origin igp
-# gobgp -p 50057 global rib add 2.22.36.0/22 origin igp
-
-# # --- Router8 (AS 20485) ---
-# echo "→ Router8 (AS 20485)"
-# gobgp -p 50058 global rib add 201.95.0.0/16 origin igp
-# gobgp -p 50058 global rib add 197.188.0.0/16 origin igp
-
-
-# # --- Router9 (AS 3320) ---
-# echo "→ Router9 (AS 3320)"
-# gobgp -p 50059 global rib add 2.22.36.0/22 origin igp
-# gobgp -p 50059 global rib add 197.188.0.0/16 origin igp
-# gobgp -p 50059 global rib add 217.181.64.0/21 origin igp
-
-# # --- Router10 (AS 36996) ---
-# echo "→ Router10 (AS 36996)"
-# gobgp -p 50060 global rib add 217.181.64.0/21 origin igp
-# gobgp -p 50060 global rib add 196.44.128.0/19 origin igp
-# gobgp -p 50060 global rib add 197.188.0.0/16 origin igp
-
-# # --- Router11 (AS 328352) ---
-# echo "→ Router11 (AS 328352)"
-# gobgp -p 50061 global rib add 196.44.128.0/19 origin igp
-
-# # --- Router12 (AS 37693) ---
-# echo "→ Router12 (AS 37693)"
-# gobgp -p 50062 global rib add 196.203.76.0/24 origin igp
-
-# # --- Router13 (AS 37332) ---
-# echo "→ Router13 (AS 37332)"
-# gobgp -p 50063 global rib add 197.188.0.0/16 origin igp
-# gobgp -p 50063 global rib add 196.203.76.0/24 origin igp
-# gobgp -p 50063 global rib add 41.60.52.0/24 origin igp
-
-# # --- Router14 (AS 17494) ---
-# echo "→ Router14 (AS 17494)"
-# gobgp -p 50064 global rib add 41.60.52.0/24 origin igp
-# gobgp -p 50064 global rib add 180.211.206.0/24 origin igp
-# gobgp -p 50064 global rib add 209.58.24.0/24 origin igp
-
-# # --- Router15 (AS 4755) ---
-# echo "→ Router15 (AS 4755)"
-# gobgp -p 50065 global rib add 180.211.206.0/24 origin igp
-# gobgp -p 50065 global rib add 5.157.88.0/24 origin igp
-
-# # --- Router16 (AS 4637) ---
-# echo "→ Router16 (AS 4637)"
-# gobgp -p 50066 global rib add 209.58.24.0/24 origin igp
-# gobgp -p 50066 global rib add 82.29.26.0/24 origin igp
-
-# # --- Router17 (AS 4804) ---
-# echo "→ Router17 (AS 4804)"
-# gobgp -p 50067 global rib add 5.157.88.0/24 origin igp
-# gobgp -p 50067 global rib add 82.29.26.0/24 origin igp
 
 echo "Static route injection complete."
 # Live logs
