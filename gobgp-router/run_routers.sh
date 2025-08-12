@@ -48,10 +48,10 @@ echo "Injecting static routes..."
 
 # --- Router1 (AS 13335) ---
 echo "→ Router1 (AS 65005)"
-gobgp -p 50051 global rib add 10.0.0.2/16 origin igp
 
-#  gobgp -p 50051 global rib add 10.0.0.2/16 bgpsec
-#  gobgp -p 50052 global rib add 10.0.0.2/16 bgpsec
+
+gobgp -p 50051 global rib add 10.0.0.2/16 bgpsec
+gobgp -p 50052 global rib add 10.0.0.2/16 bgpsec
 
 
 
